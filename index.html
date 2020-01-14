@@ -1,0 +1,94 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <h1>Hello World!</h1>
+    <script>
+        function computerPlay() {
+            var choices = ['rock', 'paper', 'scissors'];
+            var computerSelection = choices[Math.floor(Math.random() * choices.length)];
+            return computerSelection;
+        }
+
+        function playRound(playerSelection, computerSelection) {
+            var round
+            if (playerSelection.toLowerCase() == 'rock') {
+                if (computerSelection == 'rock') {
+                    console.log('It\'s a Draw!');
+                    return "draw";
+                } else if (computerSelection == 'paper') {
+                    console.log('Paper beats Rock! You lose!');
+                    return "lose";
+                } else {
+                    console.log('Rock beats Scissors! You win!');
+                    return "win";
+                }
+            }
+
+            if (playerSelection.toLowerCase() == 'paper') {
+                if (computerSelection == 'rock') {
+                    console.log('Paper beats Rock! You Win!');
+                    return "win";
+                } else if (computerSelection == 'paper') {
+                    console.log('It\'s a Draw!');
+                    return "draw";
+                } else {
+                    console.log('Scissors beats Paper! You Lose!');
+                    return "lose";
+                }
+            }
+
+            if (playerSelection.toLowerCase() == 'scissors') {
+                if (computerSelection == 'rock') {
+                    console.log('Rock beats Scissors! You lose!');
+                    return "lose";
+                } else if (computerSelection == 'paper') {
+                    console.log('Scissors beats Paper! You win!'); 
+                    return "win";
+                } else {
+                    console.log('It\'s a Draw!');
+                    return "draw";
+                }
+            }
+        }
+
+        function game() {
+            var totalRounds = 5;
+            var playerScore = 0;
+            var computerScore = 0;
+            for (i = 0; i < totalRounds; i++) {
+                const playerSelection = prompt('Choose your weapon: Rock, Paper or Scissors', 'Rock');
+                var result = playRound(playerSelection, computerPlay());
+                if (result == "win") {
+                    playerScore++;
+                }
+                else if (result == "lose") {
+                    computerScore++;
+                }
+                else if (result == "draw") {
+                    continue;
+                }
+            }
+
+            console.log('Player\'s Score: %d', playerScore);
+            console.log('Computer\'s Score: %d',  computerScore);
+
+            if (playerScore > computerScore) {
+                console.log('Player wins!');
+            }
+            else if (playerScore < computerScore) {
+                console.log('Computer wins! Try again next time!');
+            }
+            else {
+                console.log('Tie! Rematch?');
+            }
+
+        }
+
+    </script>
+</body>
+</html>
